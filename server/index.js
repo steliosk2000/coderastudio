@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  'https://funny-tiger-5bb651.netlify.app',
+  'https://steliosk2000.github.io',
 ];
 
 app.use(cors({
