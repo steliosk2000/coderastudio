@@ -1,0 +1,50 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id               Int      @id @default(autoincrement())
+  title            String
+  shortDescription String
+  description      String
+  features         String   // Storing JSON stringified array of features
+  pricing          Int
+  icon             String   // Icon identifier string
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  category  String
+  service   String
+  image     String   // File path or URL
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FormSubmission {
+  id          Int      @id @default(autoincrement())
+  serviceName String
+  name        String
+  email       String
+  phone       String?
+  domain      String?
+  message     String
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+}

@@ -1,0 +1,37 @@
+PrismaClientInitializationError: `PrismaClient` needs to be constructed with a non-empty, valid `PrismaClientOptions`:
+
+```
+new PrismaClient({
+  ...
+})
+```
+
+or
+
+```
+constructor() {
+  super({ ... });
+}
+```
+          
+PrismaClientInitializationError: `PrismaClient` needs to be constructed with a non-empty, valid `PrismaClientOptions`:
+
+```
+new PrismaClient({
+  ...
+})
+```
+
+or
+
+```
+constructor() {
+  super({ ... });
+}
+```
+          
+    at new t (C:\Users\User\.gemini\antigravity\scratch\business-website\server\node_modules\@prisma\client\runtime\client.js:70:1527)
+    at file:///C:/Users/User/.gemini/antigravity/scratch/business-website/server/prisma/seed.js:5:16
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:651:26)
+    at async importModuleDynamicallyWrapper (node:internal/vm/module:436:15)
