@@ -2,20 +2,21 @@ import express from 'express';
 import prisma from '../utils/prisma.js';
 import { requireAuth } from '../middleware/authMiddleware.js';
 import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const dir = './uploads';
-    if (!fs.existsSync(dir)){
-        fs.mkdirSync(dir);
-    }
-    cb(null, dir);
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'coderastudio/customers',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
   },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
-  }
 });
 const upload = multer({ storage });
 
@@ -32,7 +33,7 @@ router.post('/', requireAuth, upload.single('imageFile'), async (req, res) => {
   try {
     const data = { ...req.body };
     if (req.file) {
-      data.image = '/uploads/' + req.file.filename;
+      data.image = req.file.path; // Cloudinary URL
     }
     const newCustomer = await prisma.customer.create({ data });
     res.json(newCustomer);
@@ -43,15 +44,13 @@ router.put('/:id', requireAuth, upload.single('imageFile'), async (req, res) => 
   try {
     const data = { ...req.body };
     if (req.file) {
-      data.image = '/uploads/' + req.file.filename;
-      
+      data.image = req.file.path; // Cloudinary URL
+
+      // Delete old Cloudinary image
       const oldCustomer = await prisma.customer.findUnique({ where: { id: Number(req.params.id) } });
-      if (oldCustomer && oldCustomer.image && oldCustomer.image.startsWith('/uploads/')) {
-        const filename = path.basename(oldCustomer.image);
-        const oldImagePath = path.join(process.cwd(), 'uploads', filename);
-        if (fs.existsSync(oldImagePath)) {
-          fs.unlinkSync(oldImagePath);
-        }
+      if (oldCustomer?.image && oldCustomer.image.includes('cloudinary')) {
+        const publicId = req.file.filename.split('.')[0];
+        await cloudinary.uploader.destroy(`coderastudio/customers/${publicId}`).catch(() => {});
       }
     }
     
@@ -69,12 +68,12 @@ router.put('/:id', requireAuth, upload.single('imageFile'), async (req, res) => 
 router.delete('/:id', requireAuth, async (req, res) => {
   try {
     const customer = await prisma.customer.findUnique({ where: { id: Number(req.params.id) } });
-    if (customer && customer.image && customer.image.startsWith('/uploads/')) {
-      const filename = path.basename(customer.image);
-      const imagePath = path.join(process.cwd(), 'uploads', filename);
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
-      }
+    if (customer?.image && customer.image.includes('cloudinary')) {
+      // Extract public_id from Cloudinary URL and delete
+      const parts = customer.image.split('/');
+      const fileWithExt = parts[parts.length - 1];
+      const publicId = `coderastudio/customers/${fileWithExt.split('.')[0]}`;
+      await cloudinary.uploader.destroy(publicId).catch(() => {});
     }
     await prisma.customer.delete({ where: { id: Number(req.params.id) } });
     res.json({ success: true });
