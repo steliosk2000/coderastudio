@@ -20,6 +20,8 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'https://steliosk2000.github.io',
+  'https://coderastudio.gr',
+  'https://www.coderastudio.gr',
 ];
 
 app.use(cors({
