@@ -3,7 +3,7 @@ import Customers from '../components/Customers/Customers';
 
 const CustomersPage = () => {
   return (
-    <motion.main 
+    <motion.main
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
