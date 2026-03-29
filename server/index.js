@@ -20,7 +20,9 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'https://steliosk2000.github.io',
+  'http://coderastudio.gr',
   'https://coderastudio.gr',
+  'http://www.coderastudio.gr',
   'https://www.coderastudio.gr',
 ];
 
