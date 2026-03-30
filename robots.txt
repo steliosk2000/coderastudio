@@ -1,0 +1,14 @@
+# robots.txt — CoderaStudio.gr
+# https://coderastudio.gr/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin/login
+Disallow: /admin/dashboard
+Disallow: /admin/services
+Disallow: /admin/customers
+Disallow: /admin/submissions
+
+# Sitemap location
+Sitemap: https://coderastudio.gr/sitemap.xml
