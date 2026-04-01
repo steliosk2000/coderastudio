@@ -57,25 +57,17 @@ const Customers = () => {
           animate="visible"
         >
           {customersData.map((customer) => {
-            const handleClick = () => {
-              if (!customer.url) return;
-              const url = customer.url.startsWith('http') ? customer.url : `https://${customer.url}`;
-              window.open(url, '_blank', 'noopener,noreferrer');
-            };
+            const href = customer.url
+              ? customer.url.startsWith('http') ? customer.url : `https://${customer.url}`
+              : null;
 
-            return (
-              <motion.div
-                variants={cardVariants}
-                key={customer.id}
-                className={styles.card}
-                onClick={handleClick}
-                style={{ cursor: customer.url ? 'pointer' : 'default' }}
-              >
+            const cardInner = (
+              <>
                 <div className={styles.imageWrapper}>
                   <img src={customer.image?.startsWith('/uploads/') ? `${API_BASE_URL}${customer.image}` : customer.image} alt={customer.name} className={styles.image} />
                   <div className={styles.overlay}>
                     <span className={styles.serviceTag}>{customer.service}</span>
-                    {customer.url && (
+                    {href && (
                       <span className={styles.visitBadge}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
@@ -91,6 +83,28 @@ const Customers = () => {
                   <span className={styles.category}>{customer.category}</span>
                   <h3 className={styles.name}>{customer.name}</h3>
                 </div>
+              </>
+            );
+
+            return (
+              <motion.div
+                variants={cardVariants}
+                key={customer.id}
+                className={styles.card}
+              >
+                {href ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.cardLink}
+                    aria-label={`Επισκεφθείτε την ιστοσελίδα του ${customer.name}`}
+                  >
+                    {cardInner}
+                  </a>
+                ) : (
+                  cardInner
+                )}
               </motion.div>
             );
           })}

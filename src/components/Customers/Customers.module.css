@@ -119,8 +119,39 @@
   display: block;
   text-decoration: none;
   color: inherit;
+  height: 100%;
 }
 
+.cardLink:hover .image {
+  transform: scale(1.05);
+}
+
+.cardLink:hover .overlay {
+  opacity: 1;
+}
+
+.cardLink:hover .serviceTag {
+  transform: translateY(0);
+}
+
+.cardLink:hover .visitBadge {
+  transform: translateY(0);
+}
+
+.imageLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.05);
+}
+
+.imageLink:hover .overlay {
+  opacity: 1;
+}
 
 .visitBadge {
   display: inline-flex;
@@ -137,7 +168,12 @@
   white-space: nowrap;
 }
 
-.card:hover .visitBadge {
+.card:hover .visitBadge,
+.imageLink:hover .visitBadge {
+  transform: translateY(0);
+}
+
+.imageLink:hover .serviceTag {
   transform: translateY(0);
 }
 

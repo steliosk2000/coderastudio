@@ -83,13 +83,15 @@ async function main() {
         name: "Ramblers",
         category: "Bar & Restaurant",
         service: "Κατασκευή QR Μενού",
-        image: "/images/ramblers.png"
+        image: "/images/ramblers.png",
+        url: "https://rframblers.gr"
       },
       {
         name: "W Suites",
         category: "Hospitality",
         service: "Ιστοσελίδα Κρατήσεων",
-        image: "/images/w-suites.png"
+        image: "/images/w-suites.png",
+        url: "https://wsuites.gr"
       }
     ]
   });
