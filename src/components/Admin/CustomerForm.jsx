@@ -8,6 +8,7 @@ const CustomerForm = ({ initialData, onSave, onCancel }) => {
     category: '',
     service: '',
     image: '',
+    url: '',
     imageFile: null
   });
   const [imagePreview, setImagePreview] = useState(null);
@@ -69,6 +70,17 @@ const CustomerForm = ({ initialData, onSave, onCancel }) => {
               </div>
             )}
             <input type="file" name="imageFile" accept="image/*" onChange={handleFileChange} required={!initialData?.image} />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label>Website URL <span style={{ fontWeight: 400, color: 'var(--text-muted)', fontSize: '0.85em' }}>(optional)</span></label>
+            <input
+              name="url"
+              value={formData.url || ''}
+              onChange={handleChange}
+              placeholder="https://example.gr"
+              type="url"
+            />
           </div>
 
           <div className={styles.modalActions}>

@@ -31,6 +31,7 @@ const CustomersAdmin = () => {
     formData.append('name', data.name);
     formData.append('category', data.category);
     formData.append('service', data.service);
+    formData.append('url', data.url || '');
     if (data.imageFile) {
       formData.append('imageFile', data.imageFile);
     } else if (data.image) {
@@ -80,6 +81,7 @@ const CustomersAdmin = () => {
               <th>Name</th>
               <th>Category</th>
               <th>Service Rendered</th>
+              <th>Website URL</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -94,12 +96,18 @@ const CustomersAdmin = () => {
                 <td>{c.category}</td>
                 <td>{c.service}</td>
                 <td>
+                  {c.url
+                    ? <a href={c.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none', fontSize: '0.85rem' }}>{c.url}</a>
+                    : <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>—</span>
+                  }
+                </td>
+                <td>
                   <button onClick={() => handleEdit(c)} className={`${styles.actionBtn} ${styles.editBtn}`}>Edit</button>
                   <button onClick={() => handleDelete(c.id)} className={styles.actionBtn}>Delete</button>
                 </td>
               </tr>
             ))}
-            {customers.length === 0 && <tr><td colSpan="6">No customers configured.</td></tr>}
+            {customers.length === 0 && <tr><td colSpan="7">No customers configured.</td></tr>}
           </tbody>
         </table>
       </div>

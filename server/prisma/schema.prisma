@@ -33,9 +33,11 @@ model Customer {
   category  String
   service   String
   image     String   // File path or URL
+  url       String?  // Optional website URL for the customer
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
 
 model FormSubmission {
   id          Int      @id @default(autoincrement())

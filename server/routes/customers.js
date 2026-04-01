@@ -31,18 +31,23 @@ router.get('/', async (req, res) => {
 
 router.post('/', requireAuth, upload.single('imageFile'), async (req, res) => {
   try {
-    const data = { ...req.body };
+    const { name, category, service, image, url } = req.body;
+    const data = { name, category, service, url: url || null };
     if (req.file) {
       data.image = req.file.path; // Cloudinary URL
+    } else if (image) {
+      data.image = image;
     }
     const newCustomer = await prisma.customer.create({ data });
     res.json(newCustomer);
   } catch(e) { res.status(400).json({ error: 'Failed' }); }
 });
 
+
 router.put('/:id', requireAuth, upload.single('imageFile'), async (req, res) => {
   try {
-    const data = { ...req.body };
+    const { name, category, service, image, url } = req.body;
+    const data = { name, category, service, url: url || null };
     if (req.file) {
       data.image = req.file.path; // Cloudinary URL
 
@@ -52,6 +57,8 @@ router.put('/:id', requireAuth, upload.single('imageFile'), async (req, res) => 
         const publicId = req.file.filename.split('.')[0];
         await cloudinary.uploader.destroy(`coderastudio/customers/${publicId}`).catch(() => {});
       }
+    } else if (image) {
+      data.image = image;
     }
     
     const updated = await prisma.customer.update({
@@ -64,6 +71,7 @@ router.put('/:id', requireAuth, upload.single('imageFile'), async (req, res) => 
     res.status(400).json({ error: 'Failed' }); 
   }
 });
+
 
 router.delete('/:id', requireAuth, async (req, res) => {
   try {

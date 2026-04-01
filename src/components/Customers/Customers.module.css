@@ -94,6 +94,7 @@
   opacity: 0;
   transition: var(--transition);
   display: flex;
+  justify-content: space-between;
   align-items: flex-end;
   padding: 1.5rem;
 }
@@ -111,6 +112,32 @@
 }
 
 .card:hover .serviceTag {
+  transform: translateY(0);
+}
+
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.visitBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(59, 130, 246, 0.85);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+  white-space: nowrap;
+}
+
+.card:hover .visitBadge {
   transform: translateY(0);
 }
 
