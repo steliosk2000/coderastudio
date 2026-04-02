@@ -17,11 +17,11 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50, rotateX: -15 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    rotateX: 0, 
-    transition: { type: 'spring', stiffness: 200, damping: 20 } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: { type: 'spring', stiffness: 200, damping: 20 }
   }
 };
 
@@ -46,7 +46,7 @@ const Services = () => {
   return (
     <section className={styles.services} id="services">
       <div className={styles.container}>
-        <motion.div 
+        <motion.div
           className={styles.header}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,8 +57,8 @@ const Services = () => {
             Προσφέρουμε ολοκληρωμένες ψηφιακλες λύσεις που καλύπτουν κάθε ανάγκη της επιχείρησής σας.
           </p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className={styles.grid}
           style={{ perspective: 1000 }}
           variants={containerVariants}
@@ -73,7 +73,7 @@ const Services = () => {
                 </div>
                 <h3 className={styles.cardTitle}>{service.title}</h3>
                 <p className={styles.cardDescription}>{service.shortDescription}</p>
-                <div className={styles.readMore}>Από {service.pricing}€ &rarr;</div>
+                <div className={styles.readMore}>Μάθετε Περισσότερα &rarr;</div>
               </Link>
             </motion.div>
           ))}
