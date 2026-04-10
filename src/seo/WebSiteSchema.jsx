@@ -11,7 +11,7 @@ const WebSiteSchema = () => {
     alternateName: 'CoderaStudio',
     url: 'https://coderastudio.gr',
     description:
-      'Κατασκευή ιστοσελίδων, e-shop και ψηφιακού QR μενού στην Κρήτη.',
+      'Κατασκευή ιστοσελίδων, e-shop και ψηφιακού QR μενού.',
     inLanguage: 'el',
     potentialAction: {
       '@type': 'SearchAction',

@@ -29,9 +29,7 @@ const ServiceSchema = ({ service }) => {
       },
     },
     areaServed: [
-      { '@type': 'City', name: 'Χανιά' },
-      { '@type': 'City', name: 'Ηράκλειο' },
-      { '@type': 'State', name: 'Κρήτη' },
+      { '@type': 'Country', name: 'Ελλάδα' },
     ],
     offers: service.pricing
       ? {

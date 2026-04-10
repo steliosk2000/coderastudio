@@ -15,11 +15,8 @@ const LocalBusinessSchema = () => {
     image: 'https://coderastudio.gr/og-image.png',
     logo: 'https://coderastudio.gr/favicon.svg',
     description:
-      'Κατασκευή ιστοσελίδων, e-shop και ψηφιακού QR μενού στην Κρήτη. Εξειδικευόμαστε σε ξενοδοχεία, εστιατόρια και μικρές επιχειρήσεις στα Χανιά και το Ηράκλειο.',
+      'Κατασκευή ιστοσελίδων, e-shop και ψηφιακού QR μενού. Εξειδικευόμαστε σε ξενοδοχεία, εστιατόρια και επιχειρήσεις σε όλη την Ελλάδα.',
     areaServed: [
-      { '@type': 'City', name: 'Χανιά' },
-      { '@type': 'City', name: 'Ηράκλειο' },
-      { '@type': 'State', name: 'Κρήτη' },
       { '@type': 'Country', name: 'Ελλάδα' },
     ],
     address: {
@@ -45,7 +42,7 @@ const LocalBusinessSchema = () => {
           itemOffered: {
             '@type': 'Service',
             name: 'Κατασκευή E-shop',
-            description: 'Επαγγελματικό ηλεκτρονικό κατάστημα για επιχειρήσεις στην Κρήτη',
+            description: 'Επαγγελματικό ηλεκτρονικό κατάστημα για επιχειρήσεις σε όλη την Ελλάδα',
           },
         },
         {
@@ -53,7 +50,7 @@ const LocalBusinessSchema = () => {
           itemOffered: {
             '@type': 'Service',
             name: 'Κατασκευή Ιστοσελίδας Ξενοδοχείου',
-            description: 'Ιστοσελίδες ξενοδοχείων με σύστημα κρατήσεων για την Κρήτη',
+            description: 'Ιστοσελίδες ξενοδοχείων με σύστημα κρατήσεων',
           },
         },
         {
@@ -61,7 +58,7 @@ const LocalBusinessSchema = () => {
           itemOffered: {
             '@type': 'Service',
             name: 'Ψηφιακό QR Μενού',
-            description: 'Ψηφιακό μενού QR κωδικά για εστιατόρια και καφέ στην Κρήτη',
+            description: 'Ψηφιακό μενού QR κωδικά για εστιατόρια και καφέ',
           },
         },
       ],

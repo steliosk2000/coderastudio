@@ -18,9 +18,9 @@ const ServicesPage = () => {
       style={{ paddingTop: '80px', minHeight: '100vh', background: 'var(--background)' }}
     >
       <SEOHead
-        title="Υπηρεσίες Web Design — E-shop, Ξενοδοχεία & QR Μενού Κρήτη"
-        description="Κατασκευή e-shop, ιστοσελίδων ξενοδοχείων και ψηφιακού QR μενού στην Κρήτη. Επαγγελματικές λύσεις για επιχειρήσεις στα Χανιά, Ηράκλειο και σε όλη την Κρήτη."
-        keywords="κατασκευή eshop Κρήτη, ιστοσελίδα ξενοδοχείου Κρήτη, QR menu εστιατόριο Κρήτη, web design Χανιά, κατασκευή ιστοσελίδων Ηράκλειο"
+        title="Υπηρεσίες Web Design — E-shop, Ξενοδοχεία & QR Μενού"
+        description="Κατασκευή e-shop, ιστοσελίδων ξενοδοχείων και ψηφιακού QR μενού. Επαγγελματικές λύσεις web design για επιχειρήσεις σε όλη την Ελλάδα."
+        keywords="κατασκευή eshop, ιστοσελίδα ξενοδοχείου, QR menu εστιατόριο, κατασκευή ιστοσελίδων αθήνα, κατασκευή ιστοσελίδων θεσσαλονίκη, web design ελλάδα"
         canonical="https://coderastudio.gr/services"
       />
       <BreadcrumbSchema items={BREADCRUMBS} />

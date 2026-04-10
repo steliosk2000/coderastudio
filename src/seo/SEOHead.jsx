@@ -4,7 +4,7 @@ const SITE_NAME = 'Codera Studio';
 const SITE_URL = 'https://coderastudio.gr';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 const DEFAULT_DESCRIPTION =
-  'Κατασκευή ιστοσελίδων, e-shop και ψηφιακού QR μενού στην Κρήτη. Εξειδικευόμαστε σε ξενοδοχεία, εστιατόρια και μικρές επιχειρήσεις στα Χανιά και το Ηράκλειο.';
+  'Κατασκευή ιστοσελίδων, e-shop και ψηφιακού QR μενού. Εξειδικευόμαστε σε ξενοδοχεία, εστιατόρια και επιχειρήσεις σε όλη την Ελλάδα.';
 
 /**
  * SEOHead — drop-in per-page SEO component.
@@ -27,7 +27,7 @@ const SEOHead = ({
   ogType = 'website',
   noIndex = false,
 }) => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Κατασκευή Ιστοσελίδων Κρήτη`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Κατασκευή Ιστοσελίδων`;
   const canonicalUrl = canonical || SITE_URL;
 
   return (
@@ -40,8 +40,8 @@ const SEOHead = ({
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
 
       {/* Geo / Local SEO */}
-      <meta name="geo.region" content="GR-91" />
-      <meta name="geo.placename" content="Κρήτη, Ελλάδα" />
+      <meta name="geo.region" content="GR" />
+      <meta name="geo.placename" content="Ελλάδα" />
       <meta name="language" content="el" />
 
       {/* Open Graph */}

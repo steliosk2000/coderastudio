@@ -7,11 +7,11 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <div className={styles.logo} aria-label="Codera Studio — Κατασκευή Ιστοσελίδων Κρήτη">
+            <div className={styles.logo} aria-label="Codera Studio — Κατασκευή Ιστοσελίδων">
               <span className={styles.highlight}>Codera</span>Studio
             </div>
             <p className={styles.description}>
-              Η αξιόπιστη λύση για την ψηφιακή σας παρουσία στην Κρήτη.
+              Η αξιόπιστη λύση για την ψηφιακή σας παρουσία.
               Σχεδιάζουμε το αύριο, σήμερα.
             </p>
           </div>
@@ -45,7 +45,7 @@ const Footer = () => {
 
         <div className={styles.bottom}>
           <p>
-            &copy; {new Date().getFullYear()} Codera Studio — Κατασκευή Ιστοσελίδων Κρήτη. All rights reserved.
+            &copy; {new Date().getFullYear()} Codera Studio — Κατασκευή Ιστοσελίδων. All rights reserved.
           </p>
         </div>
       </div>

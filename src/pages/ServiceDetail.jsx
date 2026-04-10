@@ -59,9 +59,9 @@ const ServiceDetail = () => {
   return (
     <main className={styles.serviceDetail}>
       <SEOHead
-        title={`${service.title} στην Κρήτη`}
-        description={`${service.shortDescription} — Επαγγελματική κατασκευή από την Codera Studio για επιχειρήσεις στα Χανιά, Ηράκλειο και σε όλη την Κρήτη. Από ${service.pricing}€.`}
-        keywords={`${service.title} Κρήτη, ${service.title} Χανιά, ${service.title} Ηράκλειο, web design Κρήτη, Codera Studio`}
+        title={service.title}
+        description={`${service.shortDescription} — Επαγγελματική κατασκευή από την Codera Studio για επιχειρήσεις σε όλη την Ελλάδα. Από ${service.pricing}€.`}
+        keywords={`${service.title}, ${service.title} αθήνα, ${service.title} θεσσαλονίκη, web design ελλάδα, Codera Studio`}
         canonical={`https://coderastudio.gr/services/${service.id}`}
       />
       <ServiceSchema service={service} />
