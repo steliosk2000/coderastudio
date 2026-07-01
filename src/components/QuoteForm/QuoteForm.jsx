@@ -38,7 +38,7 @@ const QuoteForm = ({ serviceName }) => {
         setIsSubmitting(false);
         alert('Παρουσιάστηκε σφάλμα κατα την υποβολή.');
       }
-    } catch (err) {
+    } catch {
       setIsSubmitting(false);
       alert('Αδυναμία σύνδεσης στον διακομιστή.');
     }

@@ -25,7 +25,7 @@ const Login = () => {
       } else {
         setError(data.error);
       }
-    } catch(err) {
+    } catch {
       setError('Server error connecting to backend.');
     }
   };

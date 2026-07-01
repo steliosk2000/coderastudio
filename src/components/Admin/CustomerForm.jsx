@@ -1,43 +1,44 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './Admin.module.css';
 import { API_BASE_URL } from '../../utils/api';
 
 const CustomerForm = ({ initialData, onSave, onCancel }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    category: '',
-    service: '',
+    name: initialData?.name || '',
+    category: initialData?.category || '',
+    service: initialData?.service || '',
     image: '',
     imageFile: null
   });
-  const [imagePreview, setImagePreview] = useState(null);
 
-  useEffect(() => {
-    if (initialData) {
-      setFormData({ ...initialData, imageFile: null });
-      if (initialData.image) {
-        setImagePreview(
-          initialData.image.startsWith('/images/') 
-            ? `${initialData.image}`
-            : API_BASE_URL + `${initialData.image}`
-        );
-      }
-    }
-  }, [initialData]);
+  const imagePreview = formData.imageFile
+    ? URL.createObjectURL(formData.imageFile)
+    : (initialData?.image
+        ? (initialData.image.startsWith('/images/') ? initialData.image : API_BASE_URL + initialData.image)
+        : null);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files?.[0];
     if (file) {
       setFormData({ ...formData, imageFile: file });
-      setImagePreview(URL.createObjectURL(file));
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(formData);
+    const payload = {
+      name: formData.name,
+      category: formData.category,
+      service: formData.service,
+      image: formData.image || initialData?.image || ''
+    };
+
+    if (formData.imageFile) {
+      payload.imageFile = formData.imageFile;
+    }
+
+    onSave(payload);
   };
 
   return (
@@ -82,5 +83,3 @@ const CustomerForm = ({ initialData, onSave, onCancel }) => {
 };
 
 export default CustomerForm;
-
-

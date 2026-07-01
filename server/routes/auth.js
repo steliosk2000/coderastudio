@@ -4,7 +4,10 @@ import jwt from 'jsonwebtoken';
 import prisma from '../utils/prisma.js';
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET || 'supersecret_cms_key_77';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET is not set');
+}
 
 router.post('/login', async (req, res) => {
   try {

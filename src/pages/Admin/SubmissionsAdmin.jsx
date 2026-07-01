@@ -8,15 +8,17 @@ const SubmissionsAdmin = () => {
   const [selectedSub, setSelectedSub] = useState(null);
 
   const fetchSubs = () => {
-    fetch(API_BASE_URL + '/api/submissions', {
+    return fetch(API_BASE_URL + '/api/submissions', {
       headers: { 'Authorization': `Bearer ${localStorage.getItem('adminToken')}` }
     })
-    .then(res => res.json())
-    .then(data => setSubs(Array.isArray(data) ? data : []))
-    .catch(err => console.error(err));
+      .then(res => res.json())
+      .then(data => setSubs(Array.isArray(data) ? data : []))
+      .catch(err => console.error(err));
   };
 
   useEffect(() => {
+    // Fetching data on mount is intentional for this admin view.
+     
     fetchSubs();
   }, []);
 

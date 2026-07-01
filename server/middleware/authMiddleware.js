@@ -8,8 +8,10 @@ export const requireAuth = (req, res, next) => {
   }
 
   try {
-    const defaultSecret = 'supersecret_cms_key_77';
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || defaultSecret);
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ error: 'Server misconfiguration: JWT_SECRET is not set.' });
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {

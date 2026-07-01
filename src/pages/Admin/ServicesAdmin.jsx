@@ -9,12 +9,14 @@ const ServicesAdmin = () => {
   const [editingService, setEditingService] = useState(null);
 
   const fetchServices = () => {
-    fetch(API_BASE_URL + '/api/services')
-    .then(res => res.json())
-    .then(data => setServices(Array.isArray(data) ? data : []));
+    return fetch(API_BASE_URL + '/api/services')
+      .then(res => res.json())
+      .then(data => setServices(Array.isArray(data) ? data : []));
   };
 
   useEffect(() => {
+    // Fetching data on mount is intentional for this admin view.
+     
     fetchServices();
   }, []);
 

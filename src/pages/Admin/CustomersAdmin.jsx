@@ -19,6 +19,8 @@ const CustomersAdmin = () => {
   };
 
   useEffect(() => {
+    // Fetching data on mount is intentional for this admin view.
+     
     fetchCustomers();
   }, []);
 

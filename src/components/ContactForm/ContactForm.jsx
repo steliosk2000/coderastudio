@@ -36,7 +36,7 @@ const ContactForm = ({ subjectPlaceholder = "Πώς μπορούμε να βοη
         setIsSubmitting(false);
         alert('Παρουσιάστηκε σφάλμα κατα την υποβολή.');
       }
-    } catch (err) {
+    } catch {
       setIsSubmitting(false);
       alert('Αδυναμία σύνδεσης στον διακομιστή.');
     }
