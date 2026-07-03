@@ -27,7 +27,7 @@ const Footer = () => {
           <div className={styles.contact}>
             <h4 className={styles.title}>Επικοινωνία</h4>
             <p>Email: info@coderastudio.gr</p>
-            <p>Τηλέφωνο: +30 697 182 6704</p>
+            <p>Τηλέφωνο: +30 694 709 2030</p>
             <p>Χανιά, Ελλάδα</p>
           </div>
         </div>
