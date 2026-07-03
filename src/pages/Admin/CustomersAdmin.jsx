@@ -90,11 +90,12 @@ const CustomersAdmin = () => {
               <tr key={c.id}>
                 <td>{c.id}</td>
                 <td>
-                  <img src={c.image?.startsWith('/uploads/') ? `${API_BASE_URL}${c.image}` : c.image} alt={c.name} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '4px' }} />
+                  <img src={c.image || '/images/default-customer.png'} alt={c.name} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '4px' }} />
                 </td>
                 <td>{c.name}</td>
                 <td>{c.category}</td>
                 <td>{c.service}</td>
+                <td>{c.url || '-'}</td>
                 <td>
                   <button onClick={() => handleEdit(c)} className={`${styles.actionBtn} ${styles.editBtn}`}>Edit</button>
                   <button onClick={() => handleDelete(c.id)} className={styles.actionBtn}>Delete</button>
